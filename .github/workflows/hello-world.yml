@@ -33,4 +33,11 @@ jobs:
       
       - name: Print success message
         run: echo "✅ Workflow completed successfully!"
+
+      - name: Access secret
+        env:
+          MY_SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
+        run: |
+          echo "Secret is being used"
+          echo "Secret length: ${#MY_SECRET_KEY}"
         # my changes
