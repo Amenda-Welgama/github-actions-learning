@@ -42,6 +42,15 @@ jobs:
         run: |
           echo "Environment: ${{ env.NODE_ENV }}"
           echo "Log Level: ${{ env.LOG_LEVEL }}"
+
+      - name: Create artifact
+        run: echo "Build output" > output.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-output
+          path: output.txt
       
       - name: Run linter
         working-directory: ./sample-app
