@@ -1,0 +1,22 @@
+name: Conditional Workflow
+
+# Run workflow on push to main or develop branches
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Conditional step for deployment
+      - name: Deploy (main only)
+        if: github.ref == 'refs/heads/main'
+        run: echo "Deploying to production..."
